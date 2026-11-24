@@ -1,7 +1,8 @@
 from datetime import datetime
+from abc import ABCMeta
 
 
-class ModelMeta(type):
+class ModelMeta(ABCMeta):
 
     def __new__(mcs, name, bases, namespace):
 
