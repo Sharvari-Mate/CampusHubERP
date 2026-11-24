@@ -1,0 +1,3 @@
+CAMPUSHUB ERP - COURSE REPORT
+============================
+{'course_code': 'CS101', 'course_name': 'Python Programming', 'credits': 4}

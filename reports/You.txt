@@ -1,7 +1,3 @@
 CAMPUSHUB ERP - STUDENT REPORT
-------------------------------
-Student ID: ST001
-Name: Sharvari
-Age: 19
-Email: matesharvari15645@gmail.com
-Department: Computer Science
+==============================
+{'student_id': 'ST001', 'name': 'Sharvari', 'age': 19, 'email': 'matesharvari15645@gmail.com', 'department': 'Computer Science'}
