@@ -46,3 +46,21 @@ def list_students():
 @time_decorator
 def list_You():
     return students
+
+
+@log_decorator
+@time_decorator
+def list_student_names_uppercase():
+    return list(map(lambda student: student.name.upper(), students))
+
+
+@log_decorator
+@time_decorator
+def filter_students_by_department(department):
+    return list(filter(lambda student: student.department == department, students))
+
+
+@log_decorator
+@time_decorator
+def sort_students_by_name():
+    return sorted(students, key=lambda student: student.name)
