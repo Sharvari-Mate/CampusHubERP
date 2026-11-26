@@ -1,3 +1,4 @@
+
 from app.models.faculty import Faculty
 
 from app.services.faculty_service import (
@@ -6,6 +7,11 @@ from app.services.faculty_service import (
     update_faculty,
     list_faculty
 )
+
+
+print("\n--- CLEAN OLD TEST RECORDS ---")
+remove_faculty("FC001")
+remove_faculty("FC002")
 
 
 faculty1 = Faculty(
@@ -32,13 +38,19 @@ add_faculty(faculty2)
 
 print("\n--- LIST FACULTY ---")
 for faculty in list_faculty():
-    faculty.display_details()
+    print(
+        faculty.faculty_id,
+        faculty.name,
+        faculty.age,
+        faculty.email,
+        faculty.department
+    )
 
 
 print("\n--- UPDATE FACULTY ---")
 updated_faculty = Faculty(
     faculty_id="FC001",
-    name="Rahul Sharma",
+    name="Rahul Sharma Updated",
     age=36,
     email="rahul@gmail.com",
     department="Computer Science"
@@ -49,7 +61,13 @@ update_faculty("FC001", updated_faculty)
 
 print("\n--- LIST AFTER UPDATE ---")
 for faculty in list_faculty():
-    faculty.display_details()
+    print(
+        faculty.faculty_id,
+        faculty.name,
+        faculty.age,
+        faculty.email,
+        faculty.department
+    )
 
 
 print("\n--- REMOVE FACULTY ---")
@@ -58,4 +76,10 @@ remove_faculty("FC002")
 
 print("\n--- FINAL FACULTY LIST ---")
 for faculty in list_faculty():
-    faculty.display_details()
+    print(
+        faculty.faculty_id,
+        faculty.name,
+        faculty.age,
+        faculty.email,
+        faculty.department
+    )

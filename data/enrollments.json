@@ -1,0 +1,16 @@
+[
+    {
+        "student": {
+            "student_id": "ST001",
+            "name": "Sharvari",
+            "age": 19,
+            "email": "matesharvari15645@gmail.com",
+            "department": "Computer Science"
+        },
+        "course": {
+            "course_code": "CS101",
+            "course_name": "Python Programming",
+            "credits": 4
+        }
+    }
+]

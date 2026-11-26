@@ -1,42 +1,62 @@
 
 from app.utils.decorators import log_decorator, time_decorator
 
+from app.utils.logger import (
+    log_course_added,
+    log_error
+)
 
-courses = []
+from database.repository import (
+    add_course as db_add_course,
+    get_course as db_get_course,
+    update_course as db_update_course,
+    delete_course as db_delete_course,
+    get_all_courses as db_get_all_courses
+)
 
 
 @log_decorator
 @time_decorator
 def add_course(course):
-    courses.append(course)
-    print("Course added successfully")
+    try:
+        result = db_add_course(course)
+
+        if result:
+            log_course_added(course.course_code)
+            print("Course added successfully")
+
+    except Exception as error:
+        log_error(f"Error adding course: {error}")
+        raise
 
 
 @log_decorator
 @time_decorator
 def remove_course(course_code):
-    for course in courses:
-        if course.course_code == course_code:
-            courses.remove(course)
-            print("Course removed successfully")
-            return
+    result = db_delete_course(course_code)
 
-    print("Course not found")
+    if result:
+        print("Course removed successfully")
+    else:
+        print("Course not found")
 
 
 @log_decorator
 @time_decorator
 def update_course(course_code, updated_course):
-    for index, course in enumerate(courses):
-        if course.course_code == course_code:
-            courses[index] = updated_course
-            print("Course updated successfully")
-            return
+    result = db_update_course(
+        course_code,
+        course_name=updated_course.course_name,
+        credits=updated_course.credits
+    )
 
-    print("Course not found")
+    if result:
+        print("Course updated successfully")
+    else:
+        print("Course not found")
 
 
 @log_decorator
 @time_decorator
 def list_courses():
-    return courses
+    return db_get_all_courses()
